@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
 1. Create a new repo in git for ClassRoom Project
 2. Create Student class with the following attributes
@@ -12,6 +14,37 @@ Bonus: Add error handling
 * */
 public class Project1 {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Type name of classroom:");
+        Classroom cRoom = new Classroom();
+        String str ="";
+
+        do {
+            System.out.print("Options:" +
+                    "1: See students in classroom\n" +
+                    "2: Add student\n " +
+                    "3: remove student\n" +
+                    "4: update Student\n"+
+                    "e: exit program\n");
+
+            str = scanner.nextLine();
+            if(str.equals("1")){//see students
+                cRoom.printStudents();
+            }else if(str.equals("2")){//add student
+                cRoom.addStudent();
+            }else if(str.equals("3")){
+                cRoom.removeStudent();
+            }else if(str.equals("4")){
+                cRoom.updateStudent();
+            }else if(str.equals("e")){
+                System.out.print("exiting...");
+            }else{
+                System.out.print("Option not allowed.");
+            }
+
+
+        }while (!str.equals("e") );
 
     }
 }

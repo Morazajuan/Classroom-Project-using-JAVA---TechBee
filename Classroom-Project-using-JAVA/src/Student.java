@@ -2,46 +2,79 @@
 //   - Name , lastname, PhoneNumber, SSN, GPA, StudentID(Every Student Should have unique ID), Email Address
 //   - Use Encapsulation to restrict user from entering invalid data for each attribute
 
+import java.util.Scanner;
+
 public class Student {
+
     private String name = "unnamed";
-
-
-
     private String lastname = "unnamed";
     private String phoneNumber = "0123456789";
     private int SSN = 123456789;
     private double GPA = 0.0;
     private int studentID = 123456789;
     private String email = "a@b.com";
+    Scanner scanner = new Scanner(System.in);
+
+
+    private void Student (){
+        setName();
+        setLastname();
+        setPhoneNumber();
+        setSSN();
+        setStudentID();
+        setEmail();
+
+    }
+    //prints string enter
 
     //Setters
-    public void setName(String name) {
+    public void setName() {
 
-        this.name = name;
+        System.out.print("Please enter Student Name: ");
+        String str = scanner.nextLine();
+        this.name = str;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname() {
+        System.out.print("\nPlease enter Student lastname: ");
+
+        String str = scanner.nextLine();
+        this.lastname = str;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber( ) {
+        System.out.print("\nPlease enter Student phone number: ");
+
+        String str = scanner.nextLine();
         this.phoneNumber = phoneNumber;
     }
 
-    public void setSSN(int SSN) {
-        this.SSN = SSN;
+    public void setSSN() {
+        System.out.print("\nPlease enter Student SSN: ");
+
+        String str = scanner.nextLine();
+        this.SSN = Integer.parseInt(str);
     }
 
-    public void setGPA(double GPA) {
-        this.GPA = GPA;
+    public void setGPA( ) {
+        System.out.print("\nPlease enter Student GPA: ");
+
+        String str = scanner.nextLine();
+        this.GPA =  Double.parseDouble(str);
     }
 
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
+    public void setStudentID(  ) {
+        System.out.print("\nPlease enter Student ID: ");
+
+        String str = scanner.nextLine();
+        this.studentID = Integer.parseInt(str);
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail( ) {
+        System.out.print("\nPlease enter Student email: ");
+
+        String str = scanner.nextLine();
+        this.email = str;
     }
 
 
