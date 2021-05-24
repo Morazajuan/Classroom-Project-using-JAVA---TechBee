@@ -16,28 +16,31 @@ public class Project1 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Type name of classroom:");
-        Classroom cRoom = new Classroom();
         String str ="";
 
+        Classroom cRoom = new Classroom();
+//        cRoom.setClassroomName();
+
         do {
-            System.out.print("Options:" +
+            System.out.print("***************\n" +
+                    "Options:\n" +
                     "1: See students in classroom\n" +
-                    "2: Add student\n " +
+                    "2: Add student\n" +
                     "3: remove student\n" +
                     "4: update Student\n"+
-                    "e: exit program\n");
+                    "e: exit program\n"+
+                    "***************\n" );
 
             str = scanner.nextLine();
             if(str.equals("1")){//see students
                 cRoom.printStudents();
             }else if(str.equals("2")){//add student
                 cRoom.addStudent();
-            }else if(str.equals("3")){
+            }else if(str.equals("3")){//remove students
                 cRoom.removeStudent();
-            }else if(str.equals("4")){
+            }else if(str.equals("4")){//update student
                 cRoom.updateStudent();
-            }else if(str.equals("e")){
+            }else if(str.equals("e")){//exit program
                 System.out.print("exiting...");
             }else{
                 System.out.print("Option not allowed.");

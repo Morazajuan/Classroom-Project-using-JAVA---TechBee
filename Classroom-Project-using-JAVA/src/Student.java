@@ -16,11 +16,12 @@ public class Student {
     Scanner scanner = new Scanner(System.in);
 
 
-    private void Student (){
+      Student (){
         setName();
         setLastname();
         setPhoneNumber();
         setSSN();
+        setGPA();
         setStudentID();
         setEmail();
 
@@ -80,6 +81,7 @@ public class Student {
 
     //Getters
     public String getName() {
+//          System.out.print(name);
         return name;
     }
 
