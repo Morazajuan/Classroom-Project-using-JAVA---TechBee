@@ -4,8 +4,9 @@
 
 import java.util.Scanner;
 
-public class Student {
+public class Student implements StudentInterface{
 
+    private StudentInterface studenDAO;
     private String name = "unnamed";
     private String lastname = "unnamed";
     private String phoneNumber = "0123456789";
@@ -107,5 +108,25 @@ public class Student {
 
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public void addStudent(Student student) {
+
+    }
+
+    @Override
+    public void deleteStudent(Student student) {
+
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+
+    }
+
+    @Override
+    public void getAllStudent() {
+
     }
 }
