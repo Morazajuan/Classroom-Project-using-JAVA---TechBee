@@ -1,13 +1,12 @@
-//Create Student class with the following attributes
-//   - Name , lastname, PhoneNumber, SSN, GPA, StudentID(Every Student Should have unique ID), Email Address
-//   - Use Encapsulation to restrict user from entering invalid data for each attribute
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Student implements StudentInterface{
-
-    private StudentInterface studenDAO;
-    private String name = "unnamed";
+public class JavaSDETStudent {
+	
+ 
+	
+	private String name = "unnamed";
     private String lastname = "unnamed";
     private String phoneNumber = "0123456789";
     private int SSN = 123456789;
@@ -16,20 +15,28 @@ public class Student implements StudentInterface{
     private String email = "a@b.com";
     Scanner scanner = new Scanner(System.in);
 
+	JavaSDETStudent(){
+		
+		 	setName();
+	        setLastname();
+	        setPhoneNumber();
+	        setSSN();
+	        setGPA();
+	        setStudentID();
+	        setEmail();
+	};
+	
+	JavaSDETStudent(String name, String lastname, String phoneNum,int SSN, double GPA, int studentID,  String email){
+		this.name = name;
+		this.lastname = lastname;
+		this.phoneNumber = phoneNum;
+		this.SSN = SSN;
+		this.GPA = GPA;
+		this.studentID = studentID;
+		this.email=email;
+	}
 
-      Student (){
-        setName();
-        setLastname();
-        setPhoneNumber();
-        setSSN();
-        setGPA();
-        setStudentID();
-        setEmail();
-
-    }
-    //prints string enter
-
-    //Setters
+	 //Setters
     public void setName() {
 
         System.out.print("Please enter Student Name: ");
@@ -108,25 +115,5 @@ public class Student implements StudentInterface{
 
     public String getEmail() {
         return email;
-    }
-
-    @Override
-    public void addStudent(Student student) {
-
-    }
-
-    @Override
-    public void deleteStudent(Student student) {
-
-    }
-
-    @Override
-    public void updateStudent(Student student) {
-
-    }
-
-    @Override
-    public void getAllStudent() {
-
     }
 }
