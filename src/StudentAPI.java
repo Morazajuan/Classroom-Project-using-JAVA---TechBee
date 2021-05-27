@@ -1,11 +1,12 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class StudentAPI {
 	 
-	private void sendSQL(String sql) {
+	private void sendSQL(String sql, String option) {
 
 	     // TODO Auto-generated method stub
 		    final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
@@ -14,30 +15,61 @@ public class StudentAPI {
 		    final String PASS = "IAMsecure";
 		    
 		    Connection conn = null;
-		    
-		    try {
-		    	Class.forName("com.mysql.jdbc.Driver");
-		    	System.out.println("Connecting to database...");
-		    	
-				conn = DriverManager.getConnection(DB_URL,USER,PASS);
-				
-			      System.out.println("Creating table in given database...");
-			      Statement stmt = conn.createStatement();
-//			     
-//			      String sql2 = "CREATE TABLE testTable " + 
-//			                   "(studentID INTEGER not NULL, " +
-//			                   " firstName VARCHAR(255), " + 
-//			                   " lastName VARCHAR(255), " + 
-//			                   " email VARCHAR(255);"; 		     		      
-//	 
-//			    String sql = "INSERT INTO `testTable` (`AccountID`,`firstName`,`lastName`,`age`) VALUES ( 3,'Juan','C',21);";
+		    if(option.equals("add")) {
+		    	try {
+			    	Class.forName("com.mysql.jdbc.Driver");
+			    	System.out.println("Connecting to database...");
+			    	
+					conn = DriverManager.getConnection(DB_URL,USER,PASS);
+					
+ 				      Statement stmt = conn.createStatement();
+ 				     System.out.println("running sql query to add student...");
 
-			      stmt.executeUpdate(sql);
-			      System.out.println("Created table in given database...");
-				
-			} catch (SQLException | ClassNotFoundException e) {
-				e.printStackTrace();
-			}
+				      stmt.executeUpdate(sql);
+ 					
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+		    }else if(option.equals("show")) {
+		    	
+		    	try {
+			    	Class.forName("com.mysql.jdbc.Driver");
+			    	System.out.println("Connecting to database...");
+			    	
+					conn = DriverManager.getConnection(DB_URL,USER,PASS);
+					
+					 Statement stmt = conn.createStatement();
+			         ResultSet rs = stmt.executeQuery("SELECT * FROM studentDB.testTable");
+
+			         
+			         while (rs.next()) {
+			            int id = rs.getInt("studentID");
+			            String name = rs.getString("firstName");
+			            String lastname = rs.getString("lastName");
+			            String email = rs.getString("email");
+			            System.out.println(id+"   "+name+"    "+lastname+" " + email);
+			         }
+					
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+		    }else if(option.equals("update") || option.equals("remove")) {
+		    	try {
+			    	Class.forName("com.mysql.jdbc.Driver");
+			    	
+			    	System.out.println("Ruaning sql: "+ sql);
+			    	
+					conn = DriverManager.getConnection(DB_URL,USER,PASS);
+					
+					 
+			         Statement stmt = conn.createStatement();
+				     stmt.executeUpdate(sql);
+					
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+		    }  
+		    
 	}
 
 	public void addStudent(JavaSDETStudent student) {
@@ -50,7 +82,31 @@ public class StudentAPI {
 	      
 	      System.out.println("query:");
 	      System.out.println(sql);
-		sendSQL(sql);
+		sendSQL(sql, "add");
+	}
+	
+	public void showStudents() {
+		String sql = "";
+		sendSQL(sql, "show");
+
+	}
+
+	public void updateStudent(int id, JavaSDETStudent newStudent) {
+
+		String sql = "UPDATE testTable SET "
+				+ "firstName = '"+newStudent.getName() 
+				+"', lastName= '"+ newStudent.getLastname() 
+				+"', email= '"+ newStudent.getEmail() 
+				+"' WHERE studentID = "+ id +";";
+		
+		sendSQL( sql,"update");
+	}
+
+	public void removeStudent(int id) {
+		// TODO Auto-generated method stub
+		String sql = "DELETE FROM testTable WHERE studentID="+id+";";
+		System.out.println(sql);
+		sendSQL(sql, "remove");
 	}
 
 }

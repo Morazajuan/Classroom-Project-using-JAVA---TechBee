@@ -1,20 +1,25 @@
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StudentsDAO {
 
 	ArrayList<JavaSDETStudent> JAVASDETclassRoom = new ArrayList<>();
-	
+	private JavaSDETStudent newStudent;
+	private StudentAPI student;
 	StudentsDAO(){
 		System.out.println("Welcome to JAVA SDET Class");
+		student = new StudentAPI();
+
+
 	}
 	
 	//CREATE New Student --> ADD
 	public void addNewStudent() 
 	{
-		JavaSDETStudent newStudent = new JavaSDETStudent();
 		
-		StudentAPI student = new StudentAPI();
+		newStudent = new JavaSDETStudent();
+		 
 		student.addStudent(newStudent);
 		
 		JAVASDETclassRoom.add(newStudent);
@@ -23,28 +28,36 @@ public class StudentsDAO {
 	//READ Students
 	public void displayStudents() 
 	{
-		for(JavaSDETStudent arrayItem : JAVASDETclassRoom) {
-			System.out.println("*************************************");
-			System.out.println("Student Name: " + arrayItem.getName());
-			System.out.println("Student LastName: " + arrayItem.getLastname());
-			System.out.println("Student Email Address: " + arrayItem.getEmail());
-			System.out.println("Student Phone Number: " + arrayItem.getPhoneNumber());
-			System.out.println("*************************************");
-			System.out.println();
-		}
+
+		student.showStudents();
+		
 	}
+
 	
-	public void displayStudents(String name) 
-	{
-		for(JavaSDETStudent arrayItem : JAVASDETclassRoom) {
-			if (arrayItem.getName() == name)
-			{
-				System.out.println("Arraylist Item - " + arrayItem.getName());
-			}
-		}
-	}
+ 
 	
 	//UPDATE Students
+	public void updateStudent() {
+		System.out.print("Type id of student to update: ");
+		 Scanner scanner = new Scanner(System.in);
+	        String str ="";
+            str = scanner.nextLine();
+
+    		newStudent = new JavaSDETStudent();
+
+            student.updateStudent(Integer.parseInt(str),newStudent);
+	        // TODO Auto-generated method stub
+		
+	}
+
+	public void removeStudent() {
+		System.out.print("Type id of student to REMOVE: ");
+		 Scanner scanner = new Scanner(System.in);
+	        String str ="";
+           str = scanner.nextLine();
+        student.removeStudent(Integer.parseInt(str));
+
+	}
 	
 	//DELETE Students
 }
