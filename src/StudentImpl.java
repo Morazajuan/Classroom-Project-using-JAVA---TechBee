@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class StudentAPI {
+public class StudentImpl {
 	 
 	private void sendSQL(String sql, String option) {
 
@@ -41,13 +41,15 @@ public class StudentAPI {
 					 Statement stmt = conn.createStatement();
 			         ResultSet rs = stmt.executeQuery("SELECT * FROM studentDB.testTable");
 
-			         
+			         System.out.println("ID		Name		Lastname		Email");
 			         while (rs.next()) {
 			            int id = rs.getInt("studentID");
 			            String name = rs.getString("firstName");
 			            String lastname = rs.getString("lastName");
 			            String email = rs.getString("email");
-			            System.out.println(id+"   "+name+"    "+lastname+" " + email);
+			            
+			            System.out.println (id+"		"+name+"		"+lastname+"			"+email	);
+			   
 			         }
 					
 				} catch (SQLException | ClassNotFoundException e) {

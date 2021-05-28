@@ -17,7 +17,7 @@ import java.util.Scanner;
 Bonus: Add error handling
 5. Submit your project
 * */
-public class Project1 {
+public class Main {
     public static void main(String[] args) {
 
 	    
@@ -40,24 +40,16 @@ public class Project1 {
             if(str.equals("1")){//see students
         		thisClass.displayStudents();
             }else if(str.equals("2")){//add student
-
         		thisClass.addNewStudent();
-        	
-
             }else if(str.equals("3")){//remove students
             	thisClass.removeStudent();
             }else if(str.equals("4")){//update student
-            	
-            
-            	
-                thisClass.updateStudent();
-                
+                thisClass.updateStudent();     
             }else if(str.equals("e")){//exit program
                 System.out.print("exiting...");
             }else{
                 System.out.print("Option not allowed.");
             }
-
 
         }while (!str.equals("e") );
 

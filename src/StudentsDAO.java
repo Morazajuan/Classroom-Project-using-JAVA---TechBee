@@ -6,35 +6,26 @@ public class StudentsDAO {
 
 	ArrayList<JavaSDETStudent> JAVASDETclassRoom = new ArrayList<>();
 	private JavaSDETStudent newStudent;
-	private StudentAPI student;
+	private StudentImpl student;
 	StudentsDAO(){
 		System.out.println("Welcome to JAVA SDET Class");
-		student = new StudentAPI();
-
-
+		student = new StudentImpl();
 	}
 	
 	//CREATE New Student --> ADD
 	public void addNewStudent() 
 	{
-		
 		newStudent = new JavaSDETStudent();
-		 
 		student.addStudent(newStudent);
-		
 		JAVASDETclassRoom.add(newStudent);
 	}
 	
 	//READ Students
 	public void displayStudents() 
 	{
-
 		student.showStudents();
-		
 	}
 
-	
- 
 	
 	//UPDATE Students
 	public void updateStudent() {
@@ -46,10 +37,10 @@ public class StudentsDAO {
     		newStudent = new JavaSDETStudent();
 
             student.updateStudent(Integer.parseInt(str),newStudent);
-	        // TODO Auto-generated method stub
 		
 	}
-
+	
+	//DELETE Students
 	public void removeStudent() {
 		System.out.print("Type id of student to REMOVE: ");
 		 Scanner scanner = new Scanner(System.in);
@@ -59,5 +50,4 @@ public class StudentsDAO {
 
 	}
 	
-	//DELETE Students
 }
